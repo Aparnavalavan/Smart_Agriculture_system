@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | AgriSmart</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e5f2ff, #f5f9ff);
+        }
+
+        .login-container {
+            width: 90%;
+            max-width: 950px;
+            min-height: 540px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 15px 45px #1769aa25;
+        }
+
+        .login-left {
+            background: linear-gradient(145deg, #1769aa, #2998d8);
+            color: white;
+            padding: 55px 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-left h1 {
+            background: none;
+            text-align: left;
+            padding: 0;
+            font-size: 34px;
+        }
+
+        .login-left p {
+            line-height: 1.8;
+        }
+
+        .login-icon {
+            font-size: 90px;
+            margin-bottom: 20px;
+        }
+
+        .login-right {
+            padding: 55px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-right h2 {
+            font-size: 30px;
+            color: #173b60;
+        }
+
+        .login-right label {
+            display: block;
+            margin-top: 18px;
+            font-weight: 600;
+            color: #52647d;
+        }
+
+        .login-right input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #cbd8e8;
+            border-radius: 9px;
+            margin-top: 8px;
+        }
+
+        .login-right button {
+            width: 100%;
+            margin-top: 25px;
+        }
+
+        .login-right p {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-right a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media(max-width: 700px) {
+            .login-container {
+                grid-template-columns: 1fr;
+            }
+
+            .login-left {
+                padding: 30px;
+            }
+
+            .login-right {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="login-left">
+        <div class="login-icon">🌱</div>
+
+        <h1>Welcome Back!</h1>
+
+        <p>
+            Welcome to AgriSmart.
+            Login to explore smart farming
+            solutions and manage your
+            agricultural activities.
+        </p>
+    </div>
+
+    <div class="login-right">
+
+        <h2>Login</h2>
+        <p>Access your AgriSmart account</p>
+
+        <form method="POST" action="/login">
+
+            <label>Email Address</label>
+            <input type="email"
+                   name="email"
+                   placeholder="Enter your email"
+                   required>
+
+            <label>Password</label>
+            <input type="password"
+                   name="password"
+                   placeholder="Enter your password"
+                   required>
+
+            <button type="submit">Login →</button>
+
+        </form>
+        {% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+
+        <p>
+            Don't have an account?
+            <a href="/register">Create Account</a>
+        </p>
+
+        <p>
+            <a href="/">← Back to Home</a>
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriSmart | Dashboard</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f3f7fc;
+            color: #243b53;
+        }
+
+        .navbar {
+            background: white;
+            padding: 18px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px #00000008;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 700;
+            color: #1769aa;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #1769aa;
+            font-weight: 600;
+        }
+
+        .container {
+            padding: 40px 6%;
+        }
+
+        .welcome {
+            background: linear-gradient(120deg, #1769aa, #42a5df);
+            padding: 38px;
+            border-radius: 20px;
+            color: white;
+            margin-bottom: 35px;
+        }
+
+        .welcome h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            line-height: 1.7;
+        }
+
+        .section-title {
+            margin-bottom: 22px;
+        }
+
+        .section-title h2 {
+            color: #173b60;
+            font-size: 25px;
+        }
+
+        .section-title p {
+            color: #8293a7;
+            margin-top: 5px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 27px;
+            border-radius: 17px;
+            border: 1px solid #e3edf7;
+            box-shadow: 0 6px 20px #1769aa0d;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px #1769aa20;
+        }
+
+        .icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1769aa;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .card p {
+            color: #718096;
+            font-size: 14px;
+            line-height: 1.7;
+            min-height: 70px;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 17px;
+            background: #e8f4ff;
+            color: #1769aa;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .card a:hover {
+            background: #1769aa;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #8293a7;
+        }
+
+        @media(max-width: 600px) {
+            .container {
+                padding: 25px 5%;
+            }
+
+            .welcome {
+                padding: 25px;
+            }
+
+            .welcome h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">🌱 AgriSmart</div>
+    <a href="/logout">Logout ↗</a>
+</nav>
+
+<main class="container">
+
+    <section class="welcome">
+        <h1>
+            Welcome, {{ session.get('farmer_name', 'Farmer') }}! 👋
+        </h1>
+        <p>
+            Welcome to your Smart Agriculture Dashboard.
+            Manage your farming activities with smart technology.
+        </p>
+    </section>
+
+    <div class="section-title">
+        <h2>Your Agriculture Services</h2>
+        <p>Choose a service to continue.</p>
+    </div>
+
+    <section class="cards">
+
+        <div class="card">
+            <div class="icon">🌾</div>
+            <h3>Crop Recommendation</h3>
+            <p>
+                Find suitable crops based on soil nutrients
+                and environmental conditions.
+            </p>
+            <a href="/crop">Explore →</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌱</div>
+            <h3>Crop Growth Tracker</h3>
+            <p>
+                Track crop growth stages and estimate
+                your expected harvest date.
+            </p>
+            <a href="/growth">Explore →</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌤️</div>
+            <h3>Weather Monitoring</h3>
+            <p>
+                Check current temperature, humidity
+                and wind speed.
+            </p>
+            <a href="/weather">Explore →</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌿</div>
+            <h3>Plant Disease Screening</h3>
+            <p>
+                Check possible plant diseases using
+                visible symptoms and get care advice.
+            </p>
+            <a href="/disease">Explore →</a>
+        </div>
+
+        <div class="card">
+            <div class="icon">📊</div>
+            <h3>Agriculture Reports</h3>
+            <p>
+                View your agriculture activities
+                and generated reports.
+            </p>
+            <a href="/reports">Explore →</a>
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    © 2026 AgriSmart | Smart Agriculture System
+</footer>
+
+</body>
+</html>
+

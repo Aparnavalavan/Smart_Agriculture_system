@@ -1,0 +1,6 @@
+Flask
+pandas
+numpy
+mysql-connector-python
+requests
+matplotlib

@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgriSmart | Smart Agriculture</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding: 0;
+            background: #f5f8fc;
+        }
+
+        .navbar {
+            padding: 18px 6%;
+            border-radius: 0;
+            margin: 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 25px;
+            color: #1769aa;
+        }
+
+        .navbar ul {
+            align-items: center;
+        }
+
+        .nav-button {
+            background: #1769aa;
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        .hero {
+            min-height: 520px;
+            padding: 85px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 35px;
+            background: linear-gradient(120deg, #e6f3ff, #f5faff);
+        }
+
+        .hero-content {
+            max-width: 620px;
+        }
+
+        .tag {
+            color: #1769aa;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            background: none;
+            color: #173b60;
+            text-align: left;
+            padding: 0;
+            font-size: 48px;
+            line-height: 1.3;
+            margin: 20px 0;
+        }
+
+        .hero h1 span {
+            color: #1685c9;
+        }
+
+        .hero p {
+            color: #61748a;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .primary-btn, .secondary-btn {
+            display: inline-block;
+            padding: 14px 24px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .primary-btn {
+            background: #1769aa;
+            color: white;
+        }
+
+        .secondary-btn {
+            border: 1px solid #1769aa;
+            color: #1769aa;
+        }
+
+        .hero-visual {
+            background: linear-gradient(145deg, #1769aa, #46a6df);
+            width: 370px;
+            height: 330px;
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 130px;
+            box-shadow: 0 20px 45px #1769aa30;
+        }
+
+        .section {
+            padding: 65px 8%;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 30px;
+            color: #173b60;
+        }
+
+        .section-subtitle {
+            color: #718096;
+            margin-bottom: 35px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+            text-align: left;
+        }
+
+        .service-card {
+            background: white;
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid #e3edf7;
+            box-shadow: 0 8px 25px #1b4b7010;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .service-icon {
+            font-size: 38px;
+        }
+
+        .service-card h3 {
+            margin: 16px 0 10px;
+            color: #1769aa;
+        }
+
+        .service-card p {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .service-card a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer {
+            background: #173b60;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media(max-width: 800px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 55px 7%;
+            }
+
+            .hero h1 {
+                text-align: center;
+                font-size: 35px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .navbar {
+                flex-direction: column;
+            }
+        }
+        
+/* About Section */
+
+.about-section
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+    align-items: center;
+}
+
+.about-visual {
+    min-height: 350px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #d9edff, #8bc7ef);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 130px;
+    position: relative;
+}
+
+.about-content .tag {
+    color: #1685c9;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.about-content h2 {
+    color: #173b60;
+    font-size: 34px;
+    line-height: 1.4;
+    margin: 15px 0;
+}
+
+.about-content p {
+    color: #718096;
+    line-height: 1.9;
+}
+
+.about-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.about-feature {
+    background: #f0f7ff;
+    padding: 18px 10px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.about-feature h3 {
+    color: #1769aa;
+    font-size: 20px;
+}
+
+.about-feature p {
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+@media(max-width: 800px) {
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+
+    .about-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">🌱 AgriSmart</div>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register" class="nav-button">Register</a></li>
+    </ul>
+
+</nav>
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="tag">WELCOME TO AGRISMART</div>
+
+        <h1>
+            Grow Smarter.<br>
+            Farm <span>Better.</span>
+        </h1>
+
+        <p>
+            Discover a smarter way to manage agriculture.
+            Get crop recommendations, monitor weather
+            conditions and check plant health with our
+            smart farming platform.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="/login" class="primary-btn">
+                Get Started →
+            </a>
+
+            <a href="#services" class="secondary-btn">
+                Explore Services
+            </a>
+        </div>
+
+    </div>
+
+    <div class="hero-visual">
+        🌾
+    </div>
+
+</section>
+
+<section class="section" id="services">
+
+    <h2>Our Smart Farming Solutions</h2>
+
+    <p class="section-subtitle">
+        Everything you need for smarter agriculture.
+    </p>
+
+    <div class="services">
+
+        <div class="service-card">
+            <div class="service-icon">🌾</div>
+            <h3>Crop Recommendation</h3>
+            <p>Find suitable crops using soil and weather details.</p>
+            <a href="/crop">Explore →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🌤️</div>
+            <h3>Weather Monitoring</h3>
+            <p>Monitor temperature, humidity and wind speed.</p>
+            <a href="/weather">Explore →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🌿</div>
+            <h3>Plant Disease Screening</h3>
+            <p>Check possible plant problems using symptoms.</p>
+            <a href="/disease">Explore →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>Smart Dashboard</h3>
+            <p>View an overview of agriculture activities.</p>
+            <a href="/dashboard">Explore →</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📑</div>
+            <h3>Reports</h3>
+            <p>View agriculture reports and information.</p>
+            <a href="/reports">Explore →</a>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section" id="about">
+    <h2>About AgriSmart</h2>
+    <p class="section-subtitle">
+        Technology-driven solutions for better farming
+        and smarter agricultural decisions.
+    </p>
+</section>
+
+<footer>
+    <p>© 2026 AgriSmart | Smart Agriculture System</p>
+</footer>
+
+</body>
+</html>

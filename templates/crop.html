@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation | AgriSmart</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f2f7fc;
+            color: #263b53;
+        }
+
+        .navbar {
+            background: white;
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px #00000008;
+        }
+
+        .logo {
+            color: #1769aa;
+            font-size: 23px;
+            font-weight: 700;
+        }
+
+        .navbar a {
+            color: #1769aa;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            background: linear-gradient(120deg, #1769aa, #42a5df);
+            padding: 35px;
+            border-radius: 18px;
+            color: white;
+            margin-bottom: 28px;
+        }
+
+        .page-header h1 {
+            font-size: 29px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            line-height: 1.7;
+        }
+
+        .form-card {
+            background: white;
+            padding: 32px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px #1769aa10;
+        }
+
+        .form-card h2 {
+            color: #1769aa;
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #8191a5;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #42566d;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d6e2ef;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #2998d8;
+            box-shadow: 0 0 0 3px #2998d820;
+        }
+
+        .unit {
+            color: #8a9aad;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #1769aa;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 28px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #104d80;
+        }
+
+        .result-card {
+            background: #e9f5ff;
+            border: 1px solid #b9dcf5;
+            border-radius: 16px;
+            padding: 28px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 45px;
+        }
+
+        .result-card h2 {
+            color: #1769aa;
+            margin: 10px 0;
+        }
+
+        .crop-name {
+            color: #147a49;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #8293a7;
+        }
+
+        @media(max-width: 650px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-card {
+                padding: 22px;
+            }
+
+            .page-header h1 {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">🌱 AgriSmart</div>
+    <a href="/dashboard">← Dashboard</a>
+</nav>
+
+<main class="container">
+
+    <section class="page-header">
+        <h1>🌾 Crop Recommendation</h1>
+        <p>
+            Discover suitable crops using your soil nutrients
+            and environmental conditions.
+        </p>
+    </section>
+
+    <section class="form-card">
+
+        <h2>Enter Soil & Climate Details</h2>
+        <p class="subtitle">
+            Fill in the following details to get a crop suggestion.
+        </p>
+
+        <form method="POST">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>🌱 Nitrogen (N)</label>
+                    <input type="number" name="nitrogen"
+                           step="any" min="0" max="300"
+                           placeholder="Example: 50" required>
+                    <p class="unit">Soil nitrogen value</p>
+                </div>
+
+                <div class="form-group">
+                    <label>🌿 Phosphorus (P)</label>
+                    <input type="number" name="phosphorus"
+                           step="any" min="0" max="300"
+                           placeholder="Example: 40" required>
+                    <p class="unit">Soil phosphorus value</p>
+                </div>
+
+                <div class="form-group">
+                    <label>🧪 Potassium (K)</label>
+                    <input type="number" name="potassium"
+                           step="any" min="0" max="300"
+                           placeholder="Example: 30" required>
+                    <p class="unit">Soil potassium value</p>
+                </div>
+
+                <div class="form-group">
+                    <label>🌡️ Temperature (°C)</label>
+                    <input type="number" name="temperature"
+                           step="any" min="-10" max="60"
+                           placeholder="Example: 28" required>
+                    <p class="unit">Temperature in Celsius</p>
+                </div>
+
+                <div class="form-group">
+                    <label>💧 Humidity (%)</label>
+                    <input type="number" name="humidity"
+                           step="any" min="0" max="100"
+                           placeholder="Example: 80" required>
+                    <p class="unit">Relative humidity</p>
+                </div>
+
+                <div class="form-group">
+                    <label>⚗️ Soil pH</label>
+                    <input type="number" name="ph"
+                           step="any" min="0" max="14"
+                           placeholder="Example: 6.5" required>
+                    <p class="unit">Soil acidity / alkalinity</p>
+                </div>
+
+                <div class="form-group">
+                    <label>🌧️ Rainfall (mm)</label>
+                    <input type="number" name="rainfall"
+                           step="any" min="0"
+                           placeholder="Example: 200" required>
+                    <p class="unit">Rainfall amount in mm</p>
+                </div>
+        
+            </div>
+
+            <button type="submit" class="submit-btn">
+                🌱 Get Crop Recommendation →
+            </button>
+
+        </form>
+
+        {% if recommendation %}
+        <div class="result-card">
+            <div class="result-icon">🌾</div>
+            <h2>Recommended Crop</h2>
+            <div class="crop-name">{{ recommendation }}</div>
+            <p>Based on the soil and climate details you entered.</p>
+        </div>
+        {% endif %}
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    © 2026 AgriSmart | Smart Agriculture System
+</footer>
+
+</body>
+</html>

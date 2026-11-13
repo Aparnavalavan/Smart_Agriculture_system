@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Growth Tracker | AgriSmart</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f2f7fc;
+            color: #263b53;
+        }
+
+        .navbar {
+            background: white;
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px #00000008;
+        }
+
+        .logo {
+            color: #1769aa;
+            font-size: 23px;
+            font-weight: 700;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #1769aa;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: linear-gradient(120deg, #1769aa, #42a5df);
+            padding: 35px;
+            border-radius: 18px;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 29px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            line-height: 1.7;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 17px;
+            box-shadow: 0 6px 20px #1769aa10;
+            margin-bottom: 25px;
+        }
+
+        .card h2 {
+            color: #1769aa;
+            margin-bottom: 18px;
+            font-size: 21px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 9px;
+        }
+
+        select {
+            width: 100%;
+            max-width: 450px;
+            padding: 14px;
+            border: 1px solid #d6e2ef;
+            border-radius: 9px;
+            font-size: 15px;
+            background: white;
+        }
+
+        button {
+            display: block;
+            background: #1769aa;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #104d80;
+        }
+
+        .result {
+            display: none;
+        }
+
+        .duration {
+            background: #eaf5ff;
+            padding: 25px;
+            border-radius: 13px;
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .duration h3 {
+            color: #1769aa;
+            font-size: 17px;
+        }
+
+        .days {
+            font-size: 35px;
+            font-weight: 700;
+            color: #1769aa;
+            margin: 8px 0;
+        }
+
+        .stage {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 18px;
+            border-bottom: 1px solid #edf1f6;
+        }
+
+        .stage-icon {
+            font-size: 28px;
+        }
+
+        .stage h3 {
+            color: #1769aa;
+            font-size: 16px;
+        }
+
+        .stage p {
+            color: #718096;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .note {
+            color: #8293a7;
+            font-size: 12px;
+            margin-top: 18px;
+            line-height: 1.7;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #8293a7;
+        }
+
+        @media(max-width: 600px) {
+            .header h1 {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">🌱 AgriSmart</div>
+    <a href="/dashboard">← Dashboard</a>
+</nav>
+
+<main class="container">
+
+    <section class="header">
+        <h1>🌾 Crop Growth Tracker</h1>
+        <p>
+            Explore crop growth stages and understand
+            approximately how many days your crop needs to mature.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>🌱 Select Your Crop</h2>
+
+        <label for="crop">Choose a crop</label>
+
+        <select id="crop">
+            <option value="">Select Crop</option>
+            <option value="Rice">Rice</option>
+            <option value="Maize">Maize</option>
+            <option value="Groundnut">Groundnut</option>
+            <option value="Wheat">Wheat</option>
+            <option value="Millets">Millets</option>
+        </select>
+
+        <button onclick="showGrowth()">View Growth Details →</button>
+    </section>
+
+    <section class="card result" id="result">
+
+        <h2 id="cropTitle">Crop Growth Information</h2>
+
+        <div class="duration">
+            <h3>⏳ Approximate Growing Duration</h3>
+            <div class="days" id="days"></div>
+            <p id="harvest"></p>
+        </div>
+
+        <h2>🌿 Growth Stages</h2>
+
+        <div id="stages"></div>
+
+        <p class="note">
+            Note: Growth duration is approximate. Actual duration depends
+            on crop variety, climate, soil condition, water availability
+            and farming practices. These are general reference estimates,
+            not guaranteed harvest dates.
+        </p>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    © 2026 AgriSmart | Smart Agriculture System
+</footer>
+
+<script>
+const cropData = {
+    Rice: {
+        days: "120–150 Days",
+        harvest: "Approximate maturity period: 4–5 months",
+        stages: [
+            ["🌱", "Germination", "0–7 days: Seeds begin to sprout."],
+            ["🌿", "Seedling Stage", "7–25 days: Young seedlings develop."],
+            ["🌾", "Vegetative Stage", "25–60 days: Leaves and stems grow."],
+            ["🌼", "Flowering Stage", "60–100 days: Flowering and grain formation."],
+            ["🌾", "Maturity & Harvest", "120–150 days: Grains mature, depending on variety."]
+        ]
+    },
+
+    Maize: {
+        days: "90–110 Days",
+        harvest: "Approximate maturity period: 3–4 months",
+        stages: [
+            ["🌱", "Germination", "0–7 days: Seeds sprout."],
+            ["🌿", "Seedling Stage", "7–20 days: Leaves begin developing."],
+            ["🌽", "Vegetative Stage", "20–45 days: Plant grows taller."],
+            ["🌼", "Flowering Stage", "45–70 days: Tassels and silks develop."],
+            ["🌽", "Maturity & Harvest", "90–110 days: Cobs mature."]
+        ]
+    },
+
+    Groundnut: {
+        days: "100–120 Days",
+        harvest: "Approximate maturity period: 3–4 months",
+        stages: [
+            ["🌱", "Germination", "0–10 days: Seeds sprout."],
+            ["🌿", "Seedling Stage", "10–25 days: Leaves develop."],
+            ["🍃", "Vegetative Stage", "25–45 days: Plant grows and branches."],
+            ["🌼", "Flowering Stage", "45–70 days: Flowers develop and pegs form."],
+            ["🥜", "Maturity & Harvest", "100–120 days: Pods mature."]
+        ]
+    },
+
+    Wheat: {
+        days: "110–130 Days",
+        harvest: "Approximate maturity period: 4 months",
+        stages: [
+            ["🌱", "Germination", "0–7 days: Seeds sprout."],
+            ["🌿", "Seedling Stage", "7–25 days: Leaves develop."],
+            ["🌾", "Tillering Stage", "25–50 days: More shoots develop."],
+            ["🌼", "Flowering Stage", "50–90 days: Flowering and grain formation."],
+            ["🌾", "Maturity & Harvest", "110–130 days: Grains mature."]
+        ]
+    },
+
+    Millets: {
+        days: "75–100 Days",
+        harvest: "Approximate maturity period: 2.5–3.5 months",
+        stages: [
+            ["🌱", "Germination", "0–7 days: Seeds sprout."],
+            ["🌿", "Seedling Stage", "7–20 days: Young plants develop."],
+            ["🍃", "Vegetative Stage", "20–40 days: Leaves and stems grow."],
+            ["🌼", "Flowering Stage", "40–65 days: Flowering and grain formation."],
+            ["🌾", "Maturity & Harvest", "75–100 days: Grains mature."]
+        ]
+    }
+};
+
+function showGrowth() {
+    const selected = document.getElementById("crop").value;
+
+    if (!selected) {
+        alert("Please select a crop first!");
+        return;
+    }
+
+    const data = cropData[selected];
+
+    document.getElementById("cropTitle").textContent =
+        "🌱 " + selected + " Growth Information";
+
+    document.getElementById("days").textContent = data.days;
+    document.getElementById("harvest").textContent = data.harvest;
+
+    let stageHTML = "";
+
+    data.stages.forEach(stage => {
+        stageHTML += `
+            <div class="stage">
+                <div class="stage-icon">${stage[0]}</div>
+                <div>
+                    <h3>${stage[1]}</h3>
+                    <p>${stage[2]}</p>
+                </div>
+            </div>
+        `;
+    });
+
+    document.getElementById("stages").innerHTML = stageHTML;
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("result").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+</script>
+
+</body>
+</html>

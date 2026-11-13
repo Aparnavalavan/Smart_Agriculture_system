@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | AgriSmart</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #e5f2ff, #f5f9ff);
+        }
+
+        .register-container {
+            width: 90%;
+            max-width: 950px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 15px 45px #1769aa25;
+        }
+
+        .register-left {
+            background: linear-gradient(145deg, #1769aa, #2998d8);
+            color: white;
+            padding: 50px 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .register-left h1 {
+            background: none;
+            text-align: left;
+            padding: 0;
+            font-size: 34px;
+        }
+
+        .register-left p {
+            line-height: 1.8;
+        }
+
+        .register-icon {
+            font-size: 85px;
+            margin-bottom: 20px;
+        }
+
+        .register-right {
+            padding: 40px;
+        }
+
+        .register-right h2 {
+            color: #173b60;
+            font-size: 29px;
+        }
+
+        .register-right label {
+            display: block;
+            margin-top: 13px;
+            font-weight: 600;
+            color: #52647d;
+        }
+
+        .register-right input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd8e8;
+            border-radius: 9px;
+            margin-top: 7px;
+        }
+
+        .register-right button {
+            width: 100%;
+            margin-top: 22px;
+        }
+
+        .register-right p {
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .register-right a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media(max-width: 700px) {
+            .register-container {
+                grid-template-columns: 1fr;
+            }
+
+            .register-left {
+                padding: 30px;
+            }
+
+            .register-right {
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="register-container">
+
+    <div class="register-left">
+        <div class="register-icon">🌾</div>
+
+        <h1>Join AgriSmart!</h1>
+
+        <p>
+            Create your account and explore
+            smart agriculture solutions.
+            Start your journey towards
+            smarter farming today.
+        </p>
+    </div>
+
+    <div class="register-right">
+
+        <h2>Create Account</h2>
+        <p>Register as a farmer</p>
+
+        <form method="POST" action="/register">
+
+            <label>Full Name</label>
+            <input type="text"
+                   name="name"
+                   placeholder="Enter your name"
+                   required>
+
+            <label>Email Address</label>
+            <input type="email"
+                   name="email"
+                   placeholder="Enter your email"
+                   required>
+
+            <label>Password</label>
+            <input type="password"
+                   name="password"
+                   placeholder="Create a password"
+                   minlength="8"
+                   required>
+
+            <label>Confirm Password</label>
+            <input type="password"
+                   name="confirm_password"
+                   placeholder="Confirm your password"
+                   minlength="8"
+                   required>
+
+            <button type="submit">Create Account →</button>
+            {% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+
+{% if success %}
+    <p style="color:green;">{{ success }}</p>
+{% endif %}
+
+        </form>
+
+        <p>
+            Already have an account?
+            <a href="/login">Login</a>
+        </p>
+
+        <p>
+            <a href="/">← Back to Home</a>
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+
+/* Smart Agriculture - Modern Blue Theme */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f3f6fb;
+    color: #24344d;
+    padding: 25px;
+}
+
+/* Navigation Bar */
+
+.navbar {
+    background: #ffffff;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 14px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: #1769aa;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #52647d;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #1677d2;
+}
+
+/* Headings */
+
+h1 {
+    color: white;
+    background: linear-gradient(120deg, #1769aa, #2998d8);
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #1769aa;
+    margin: 25px 0 15px;
+}
+
+h3 {
+    color: #1769aa;
+}
+
+/* Paragraphs */
+
+p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 12px 0;
+}
+
+/* Cards */
+
+li,
+.result {
+    background: #ffffff;
+    padding: 22px;
+    margin: 15px 0;
+    border-radius: 14px;
+    border: 1px solid #e1eaf5;
+    box-shadow: 0 4px 12px rgba(30, 80, 130, 0.06);
+}
+
+li {
+    list-style: none;
+    border-left: 5px solid #2998d8;
+}
+
+li:hover {
+    transform: translateY(-3px);
+    transition: 0.3s;
+}
+
+/* Forms */
+
+input,
+select {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0 18px;
+    border: 1px solid #cbd8e8;
+    border-radius: 9px;
+    font-size: 15px;
+    background: white;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #2998d8;
+}
+
+/* Buttons */
+
+button {
+    background: #1769aa;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0d4f86;
+}
+
+/* Result Section */
+
+.result {
+    background: #e8f4ff;
+    border: 1px solid #b8dcf7;
+    text-align: center;
+}
+
+.result h3 {
+    font-size: 27px;
+    margin: 12px;
+}
+
+/* Links */
+
+a {
+    color: #1769aa;
+}
